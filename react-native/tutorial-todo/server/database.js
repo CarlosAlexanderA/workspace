@@ -45,6 +45,8 @@ export async function getSharedTodoById(id) {
 
 export async function getUserById(id) {
   const [rows] = await pool.query('SELECT * FROM users WHERE id = ?;', [id]);
+  // console.log(rows[0]);
+
   return rows[0];
 }
 
@@ -52,7 +54,7 @@ export async function getUserByEmail(email) {
   const [rows] = await pool.query('SELECT * FROM users WHERE email = ?;', [
     email,
   ]);
-  console.log(rows[0]);
+  // console.log(rows[0]);
   return rows[0];
 }
 
@@ -63,7 +65,7 @@ export async function createTodo(user_id, title) {
   );
 
   const todoId = result.insertId;
-  return getTodosById(todoId);
+  return getTodo(todoId);
 }
 
 export async function deleteTodo(id) {
@@ -83,7 +85,7 @@ export async function toggleComplete(id, value) {
 
 export async function shareTodo(todo_id, user_id, shared_with_id) {
   const [result] = await pool.query(
-    'INSERT INTO shared_todos (todo_id, user_id, shared_with_id) VALUES (?, ?);',
+    'INSERT INTO shared_todos (todo_id, user_id, shared_with_id) VALUES (?, ?, ?);',
     [todo_id, user_id, shared_with_id]
   );
 

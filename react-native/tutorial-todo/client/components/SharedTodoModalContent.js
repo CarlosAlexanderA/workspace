@@ -17,10 +17,10 @@ export function SharedTodoModalContent({id, title, share_with_id, completed}) {
       }
     );
 
-    const {author: authorRes, share_with} = await response.json();
+    const {author: authorRes, shared_with} = await response.json();
 
     setAuthor(authorRes);
-    setShareWith(share_with);
+    setShareWith(shared_with);
     console.log(author);
   }
 
@@ -43,12 +43,12 @@ export function SharedTodoModalContent({id, title, share_with_id, completed}) {
       <View style={{flexDirection: 'row'}}>
         <View style={styles.participant}>
           <Text style={[styles.description, {color: 'white'}]}>
-            {author.name}
+            {author === undefined ? '' : author.name}
           </Text>
         </View>
         <View style={styles.participant}>
           <Text style={[styles.description, {color: 'white'}]}>
-            {shareWith.name}
+            {shareWith === undefined ? '' : shareWith.name}
           </Text>
         </View>
       </View>

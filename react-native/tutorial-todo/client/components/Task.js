@@ -9,11 +9,15 @@ import {
   View,
 } from 'react-native';
 import {SharedTodoModalContent} from './SharedTodoModalContent';
+import {TodoModalContent} from './TodoModalContent';
 
 function CheckMark({id, completed, toggleTodo}) {
   async function toggle() {
     const response = await fetch(`http://192.168.18.24:8080/todos/${id}`, {
       method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         value: completed ? false : true,
       }),
@@ -82,24 +86,21 @@ export default function Task({
       </View>
       {shared_with_id !== null ? (
         <Feather
-          onPress={handlePresentModal}
+          onPress={handlePresentShared}
           name="users"
           size={20}
           color="#383839"
         />
       ) : (
         <Feather
-          onPress={handlePresentShared}
+          onPress={handlePresentModal}
           name="share"
           size={20}
           color="#383839"
         />
       )}
       {isDeleteActive && (
-        <Pressable
-          // onPress={deleteTodo}
-          style={styles.deleteButton}
-        >
+        <Pressable onPress={deleteTodo} style={styles.deleteButton}>
           <Text style={{color: 'white', fontWeight: 'bold'}}>x</Text>
         </Pressable>
       )}
@@ -116,6 +117,17 @@ export default function Task({
             share_with_id={shared_with_id}
             completed={completed}
           />
+        </BottomSheetView>
+      </BottomSheetModal>
+
+      <BottomSheetModal
+        ref={bottomSheetModalRef}
+        index={2}
+        snapPoints={snapPoints}
+        backgroundStyle={{borderRadius: 50, borderWidth: 4}}
+      >
+        <BottomSheetView style={styles.contentContainer}>
+          <TodoModalContent id={id} title={title} />
         </BottomSheetView>
       </BottomSheetModal>
     </TouchableOpacity>

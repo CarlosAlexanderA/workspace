@@ -60,13 +60,35 @@ app.get('/todos/:id', async (req, res) => {
 
 // GET users from to-do shared
 app.get('/todos/shared_todos/:id', async (req, res) => {
-  const todo = await getSharedTodoById(req.params.id);
-  // console.log(todo);
+  try {
+    // Buscar el todo compartido por ID
+    const todo = await getSharedTodoById(req.params.id);
 
-  const author = await getUserById(todo.user_id);
-  const shared_with = await getUserById(todo.shared_with_id);
+    // Si no se encuentra el todo, enviar un error 404
+    if (!todo) {
+      return res.status(404).send({message: 'To-do not found'});
+    }
 
-  res.status(200).send({author, shared_with});
+    // Buscar el autor y el usuario con quien se compartió
+    const author = await getUserById(todo.user_id);
+    const shared_with = await getUserById(todo.shared_with_id);
+
+    // Verificar si el autor o el usuario compartido no existen
+    if (!author) {
+      return res.status(404).send({message: 'Author not found'});
+    }
+
+    if (!shared_with) {
+      return res.status(404).send({message: 'Shared user not found'});
+    }
+
+    // Si todo está correcto, enviar los datos del autor y el usuario compartido
+    res.status(200).send({author, shared_with});
+  } catch (error) {
+    // Manejar errores del servidor
+    console.error(error);
+    res.status(500).send({message: 'Server error'});
+  }
 });
 
 // GET user by id
@@ -93,11 +115,23 @@ app.delete('/todos/:id', async (req, res) => {
 
 // SHARE to-do to a user
 app.post('/todos/shared_todos', async (req, res) => {
-  const {todo_id, user_id, email} = req.body;
-  const userToShare = await getUserByEmail(email);
-  const sharedTodo = await shareTodo(todo_id, user_id, userToShare.id);
+  try {
+    const {todo_id, user_id, email} = req.body;
 
-  res.status(201).send(sharedTodo);
+    const userToShare = await getUserByEmail(email);
+
+    if (!userToShare) {
+      // Si no se encuentra el usuario, enviamos un 404 (no encontrado)
+      return res.sendStatus(404).send({message: 'User not found'});
+    }
+
+    const sharedTodo = await shareTodo(todo_id, user_id, userToShare.id);
+
+    res.status(201).send({index: sharedTodo}); // 201 indica que se creó exitosamente
+  } catch (error) {
+    // Si hay algún error en el proceso, enviamos un 500 (error del servidor)
+    res.sendStatus(500).send({message: 'Server error'});
+  }
 });
 
 // CREATE new todo

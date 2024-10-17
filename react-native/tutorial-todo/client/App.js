@@ -5,6 +5,7 @@ import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 import Task from './components/Task';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {InputTask} from './components/InputTask';
 
 export default function App() {
   const [todos, setTodos] = useState([]);
@@ -42,15 +43,27 @@ export default function App() {
             <StatusBar style="auto" />
             <FlatList
               data={todos}
-              keyExtractor={(todo) => todo.id}
-              renderItem={({item}) => (
-                <Task {...item} toggleTodo={toggleTodo} clearTodo={clearTodo} />
-              )}
+              keyExtractor={(todo, index) =>
+                todo.id ? todo.id.toString() : index.toString()
+              }
+              renderItem={({item}) => {
+                // console.log('Rendering item:', item);
+
+                return (
+                  <Task
+                    {...item}
+                    toggleTodo={toggleTodo}
+                    clearTodo={clearTodo}
+                  />
+                );
+              }}
               ListHeaderComponent={() => (
                 <Text style={styles.title}>Today</Text>
               )}
               contentContainerStyle={styles.contentContainerStyle}
             />
+
+            <InputTask todos={todos} setTodos={setTodos} />
           </SafeAreaView>
         </SafeAreaProvider>
       </BottomSheetModalProvider>
