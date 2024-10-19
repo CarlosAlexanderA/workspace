@@ -1,24 +1,23 @@
-import { useEffect, useState } from 'react';
 import { Alert, Image, ScrollView, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { createUser } from '../../lib/appWrite';
+import { Link, router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { images } from '../../constants';
 import { FormField } from '../../components/FormField';
 import { CustomButton } from '../../components/CustomButton';
-import { Link, router } from 'expo-router';
-import { images } from '../../constants';
-import { createUser } from '../../lib/appWrite';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
-//! ERROR CON EL BUNDLING
-//? NI IDEA A QUE SE DEBE
-
-const SignUp = async () => {
+const TSignUp = () => {
   const [form, setForm] = useState({
     username: '',
     email: '',
     password: '',
   });
-  const { setUser, setIsLogged } = useGlobalContext();
+
   const [isSubmiting, setIsSubmiting] = useState(false);
+
+  const { setUser, setIsLogged } = useGlobalContext();
 
   const submit = async () => {
     if (!form.username || !form.email || !form.password) {
@@ -33,6 +32,9 @@ const SignUp = async () => {
       // ! set it to global state...
       setUser(res);
       setIsLogged(true);
+
+      Alert.alert('Success', 'User signed in successfully');
+
       router.replace('/home');
     } catch (error) {
       Alert.alert('Error', error.message);
@@ -98,4 +100,4 @@ const SignUp = async () => {
   );
 };
 
-export default SignUp;
+export default TSignUp;
