@@ -9,14 +9,14 @@ import { getCurrentUser, signIn } from '../../lib/appWrite';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
 const SignIn = () => {
+  const { setUser, setIsLoggedIn } = useGlobalContext();
+
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
 
   const [isSubmiting, setIsSubmiting] = useState(false);
-
-  const { setUser, setIsLoggedIn } = useGlobalContext();
 
   const submit = async () => {
     if (!form.email || !form.password) {
@@ -27,12 +27,13 @@ const SignIn = () => {
 
     try {
       await signIn(form.email, form.password);
+
       const res = await getCurrentUser();
 
       setUser(res);
       setIsLoggedIn(true);
 
-      Alert.alert('Success', 'User signed in successfully');
+      // Alert.alert('Success', 'User signed in successfully');
 
       router.replace('/home');
     } catch (error) {

@@ -30,9 +30,10 @@ const SignUp = async () => {
     try {
       const res = await createUser(form.email, form.password, form.username);
 
-      // ! set it to global state...
+      // * set it to global state...
       setUser(res);
       setIsLoggedIn(true);
+
       router.replace('/home');
     } catch (error) {
       Alert.alert('Error', error.message);

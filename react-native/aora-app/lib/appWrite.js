@@ -125,3 +125,40 @@ export const getLatestPosts = async () => {
     console.log(error);
   }
 };
+
+export const searchPosts = async (query) => {
+  try {
+    const posts = await databases.listDocuments(databaseId, videoCollectionId, [
+      Query.search('title', query),
+    ]);
+    // console.log(posts.documents);
+
+    return posts.documents;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUserPosts = async (userId) => {
+  try {
+    const posts = await databases.listDocuments(databaseId, videoCollectionId, [
+      Query.equal('creator', userId),
+    ]);
+    // console.log(posts.documents);
+
+    return posts.documents;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const signOut = async () => {
+  try {
+    const session = await account.deleteSession('current');
+
+    return session;
+  } catch (error) {
+    console.log(error);
+    throw new Error(error);
+  }
+};
