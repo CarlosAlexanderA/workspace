@@ -17,7 +17,7 @@ const TSignUp = () => {
 
   const [isSubmiting, setIsSubmiting] = useState(false);
 
-  const { setUser, setIsLogged } = useGlobalContext();
+  const { setUser, setIsLoggedIn } = useGlobalContext();
 
   const submit = async () => {
     if (!form.username || !form.email || !form.password) {
@@ -31,7 +31,7 @@ const TSignUp = () => {
 
       // ! set it to global state...
       setUser(res);
-      setIsLogged(true);
+      setIsLoggedIn(true);
 
       Alert.alert('Success', 'User signed in successfully');
 

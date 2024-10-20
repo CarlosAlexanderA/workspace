@@ -17,7 +17,7 @@ const SignUp = async () => {
     email: '',
     password: '',
   });
-  const { setUser, setIsLogged } = useGlobalContext();
+  const { setUser, setIsLoggedIn } = useGlobalContext();
   const [isSubmiting, setIsSubmiting] = useState(false);
 
   const submit = async () => {
@@ -32,7 +32,7 @@ const SignUp = async () => {
 
       // ! set it to global state...
       setUser(res);
-      setIsLogged(true);
+      setIsLoggedIn(true);
       router.replace('/home');
     } catch (error) {
       Alert.alert('Error', error.message);

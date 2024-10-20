@@ -16,7 +16,7 @@ const SignIn = () => {
 
   const [isSubmiting, setIsSubmiting] = useState(false);
 
-  const { setUser, setIsLogged } = useGlobalContext();
+  const { setUser, setIsLoggedIn } = useGlobalContext();
 
   const submit = async () => {
     if (!form.email || !form.password) {
@@ -30,7 +30,7 @@ const SignIn = () => {
       const res = await getCurrentUser();
 
       setUser(res);
-      setIsLogged(true);
+      setIsLoggedIn(true);
 
       Alert.alert('Success', 'User signed in successfully');
 

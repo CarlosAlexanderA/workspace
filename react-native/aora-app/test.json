@@ -1,0 +1,74 @@
+[
+  {
+    "$collectionId": "6712b81e0034c424a8af",
+    "$createdAt": "2024-10-19T20:05:51.953+00:00",
+    "$databaseId": "6712b7b6000055966682",
+    "$id": "6714111f002ebd22a133",
+    "$permissions": [],
+    "$updatedAt": "2024-10-19T20:05:51.953+00:00",
+    "creator": {
+      "$collectionId": "6712b7f90032c7047ee6",
+      "$createdAt": "2024-10-18T21:41:23.774+00:00",
+      "$databaseId": "6712b7b6000055966682",
+      "$id": "6712d6030017befd97d4",
+      "$permissions": [],
+      "$updatedAt": "2024-10-18T21:41:23.774+00:00",
+      "accountId": "6712d601001cf158264e",
+      "avatar": "https://cloud.appwrite.io/v1/avatars/initials?name=alex&project=6712b510003209e9b0c2",
+      "email": "contact@alex.es",
+      "username": "alex"
+    },
+    "prempt": "Picture the future of coding with AI. Show AR VR",
+    "thumbnail": "https://i.ibb.co/Xkgk7DY/Video.png",
+    "title": "How AI Shapes Coding Future",
+    "video": "https://player.vimeo.com/video/949581999?h=4672125b31"
+  },
+  {
+    "$collectionId": "6712b81e0034c424a8af",
+    "$createdAt": "2024-10-19T20:06:41.235+00:00",
+    "$databaseId": "6712b7b6000055966682",
+    "$id": "6714115100021c1c0432",
+    "$permissions": [],
+    "$updatedAt": "2024-10-19T20:06:41.235+00:00",
+    "creator": {
+      "$collectionId": "6712b7f90032c7047ee6",
+      "$createdAt": "2024-10-18T21:41:23.774+00:00",
+      "$databaseId": "6712b7b6000055966682",
+      "$id": "6712d6030017befd97d4",
+      "$permissions": [],
+      "$updatedAt": "2024-10-18T21:41:23.774+00:00",
+      "accountId": "6712d601001cf158264e",
+      "avatar": "https://cloud.appwrite.io/v1/avatars/initials?name=alex&project=6712b510003209e9b0c2",
+      "email": "contact@alex.es",
+      "username": "alex"
+    },
+    "prempt": "Create a motivating AI driven video aimed at inspiring coding enthusiasts with simple language",
+    "thumbnail": "https://i.ibb.co/tJBcX20/Appwrite-video.png",
+    "title": "Get inspired to code",
+    "video": "https://player.vimeo.com/video/949579770?h=897cd5e781"
+  },
+  {
+    "$collectionId": "6712b81e0034c424a8af",
+    "$createdAt": "2024-10-19T20:07:21.754+00:00",
+    "$databaseId": "6712b7b6000055966682",
+    "$id": "6714117900238e8fc6de",
+    "$permissions": [],
+    "$updatedAt": "2024-10-19T20:07:21.754+00:00",
+    "creator": {
+      "$collectionId": "6712b7f90032c7047ee6",
+      "$createdAt": "2024-10-18T21:41:23.774+00:00",
+      "$databaseId": "6712b7b6000055966682",
+      "$id": "6712d6030017befd97d4",
+      "$permissions": [],
+      "$updatedAt": "2024-10-18T21:41:23.774+00:00",
+      "accountId": "6712d601001cf158264e",
+      "avatar": "https://cloud.appwrite.io/v1/avatars/initials?name=alex&project=6712b510003209e9b0c2",
+      "email": "contact@alex.es",
+      "username": "alex"
+    },
+    "prempt": "Create a heartwarming video following the travels of dalmatian dog exploring beautiful Italy",
+    "thumbnail": "https://i.ibb.co/CBYzyKh/Video-1.png",
+    "title": "Dalmatian's journey through Italy",
+    "video": "https://player.vimeo.com/video/949582778?h=d60220d68d"
+  }
+]

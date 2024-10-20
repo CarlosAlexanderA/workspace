@@ -17,11 +17,21 @@ export const config = {
   storageId: '6712ba0b000239fdff64',
 };
 
+const {
+  endpoint,
+  platform,
+  projectId,
+  databaseId,
+  userCollectionId,
+  videoCollectionId,
+  storageId,
+} = config;
+
 const client = new Client();
 client
-  .setEndpoint(config.endpoint)
-  .setProject(config.projectId) // Your Project ID
-  .setPlatform(config.platform); // Your package name / bundle identifier
+  .setEndpoint(endpoint)
+  .setProject(projectId) // Your Project ID
+  .setPlatform(platform); // Your package name / bundle identifier
 
 const account = new Account(client);
 const avatars = new Avatars(client);
@@ -45,8 +55,8 @@ export const createUser = async (email, password, username) => {
     await signIn(email, password);
 
     const newUser = await databases.createDocument(
-      config.databaseId,
-      config.userCollectionId,
+      databaseId,
+      userCollectionId,
       ID.unique(),
       {
         accountId: newAccount.$id,
@@ -81,14 +91,36 @@ export const getCurrentUser = async () => {
     if (!currentAccount) throw Error;
 
     const currentUser = await databases.listDocuments(
-      config.databaseId,
-      config.userCollectionId,
+      databaseId,
+      userCollectionId,
       [Query.equal('accountId', currentAccount.$id)],
     );
 
     if (!currentUser) throw Error;
 
     return currentUser.documents[0];
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAllPosts = async () => {
+  try {
+    const posts = await databases.listDocuments(databaseId, videoCollectionId);
+
+    return posts.documents;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getLatestPosts = async () => {
+  try {
+    const posts = await databases.listDocuments(databaseId, videoCollectionId, [
+      Query.orderDesc('$createdAt', Query.limit(7)),
+    ]);
+
+    return posts.documents;
   } catch (error) {
     console.log(error);
   }
