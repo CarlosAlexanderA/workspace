@@ -1,4 +1,4 @@
-import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { EmptyState } from '../../components/EmptyState';
 import { useAppWrite } from '../../lib/useAppWrite';
@@ -81,3 +81,15 @@ const Profile = () => {
 };
 
 export default Profile;
+
+// * me quede en el minuto 3:41:40 / 4:28:30
+// ? me quede en el minuto 3:41:40 / 4:28:30
+// * me quede en el minuto 3:41:40 / 4:28:30
+// ? me quede en el minuto 3:41:40 / 4:28:30
+// * me quede en el minuto 3:41:40 / 4:28:30
+// *? me quede en el minuto 3:41:40 / 4:28:30
+// *! me quede en el minuto 3:41:40 / 4:28:30
+// *? me quede en el minuto 3:41:40 / 4:28:30
+// * me quede en el minuto 3:41:40 / 4:28:30
+// *? me quede en el minuto 3:41:40 / 4:28:30
+// *! me quede en el minuto 3:41:40 / 4:28:30

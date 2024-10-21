@@ -1,25 +1,18 @@
-import {
-  Alert,
-  FlatList,
-  Image,
-  RefreshControl,
-  Text,
-  View,
-} from 'react-native';
+import { FlatList, Image, RefreshControl, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '../../constants/';
 import { StatusBar } from 'expo-status-bar';
 import { SearchInput } from '../../components/SearchInput';
 import { Trending } from '../../components/Trending';
 import { EmptyState } from '../../components/EmptyState';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getAllPosts, getLatestPosts } from '../../lib/appWrite';
 import { useAppWrite } from '../../lib/useAppWrite';
 import { VideoCard } from '../../components/VideoCard';
 import { useGlobalContext } from '../../context/GlobalProvider';
 
 const Home = () => {
-  const { user, setUser, setIsLoggedIn } = useGlobalContext();
+  const { user } = useGlobalContext();
 
   const { data: posts, refetch } = useAppWrite(getAllPosts);
   const { data: latestPosts } = useAppWrite(getLatestPosts);

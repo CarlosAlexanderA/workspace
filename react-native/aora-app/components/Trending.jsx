@@ -32,7 +32,7 @@ const TrendingItem = ({ activeItem, item }) => {
       {play ? (
         <Video
           source={{
-            uri: 'https://www.w3schools.com/html/mov_bbb.mp4',
+            uri: item.video,
           }}
           // source={{uri:item.video}}
           className="w-52 h-72 rounded-[33px] mt-3 bg-white/10"
