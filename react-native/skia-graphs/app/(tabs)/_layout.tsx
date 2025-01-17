@@ -15,13 +15,15 @@ const TabLayout = () => {
           ),
         }}
       />
-      {/* <Tabs.Screen
-        name="settings"
+      <Tabs.Screen
+        name="barChart"
         options={{
-          title: 'Settings',
-          tabBarIcon: ({ color }) => <FontAwesome size={28} name="cog" color={color} />,
+          title: 'Bar Chart',
+          tabBarIcon: ({color}) => (
+            <FontAwesome size={28} name="home" color={color} />
+          ),
         }}
-      /> */}
+      />
     </Tabs>
   );
 };
