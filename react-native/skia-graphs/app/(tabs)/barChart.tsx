@@ -84,14 +84,10 @@ const BarChart = () => {
         setSelectedDay(day);
         selectedBar.value = label;
         selectedValue.value = withTiming(value);
-
-        console.log({label, value, day});
       } else {
         setSelectedDay('Total');
         selectedBar.value = null;
         selectedValue.value = withTiming(totalValue);
-
-        console.log('fuera de la barra');
       }
     }
   };

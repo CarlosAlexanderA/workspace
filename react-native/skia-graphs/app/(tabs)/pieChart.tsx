@@ -92,10 +92,6 @@ export default function PieChart() {
         {data.map((item, index) => (
           <RenderItem item={item} index={index} key={index} />
         ))}
-        {/* <FlatList
-          data={data}
-          renderItem={(item, index) => <RenderItem item={item} index={index} />}
-        /> */}
       </ScrollView>
     </SafeAreaView>
   );

@@ -15,8 +15,6 @@ type Props = {
 
 export const RenderItem = ({item, index}: Props) => {
   const {width} = useWindowDimensions();
-  console.log('render Item', item.color);
-
   return (
     <Animated.View
       style={[styles.container, {width: width * 0.9}]}
