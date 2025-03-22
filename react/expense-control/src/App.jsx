@@ -1,5 +1,5 @@
 import {ThemeProvider} from 'styled-components';
-import {Dark, Light, MyRoutes} from './index';
+import {AuthContextProvider, Dark, Light, MyRoutes} from './index';
 import {createContext, useState} from 'react';
 
 export const ThemeContext = createContext(null);
@@ -12,7 +12,9 @@ function App() {
     <>
       <ThemeContext.Provider value={{setTheme, theme}}>
         <ThemeProvider theme={themeStyle}>
-          <MyRoutes />
+          <AuthContextProvider>
+            <MyRoutes />
+          </AuthContextProvider>
         </ThemeProvider>
       </ThemeContext.Provider>
     </>

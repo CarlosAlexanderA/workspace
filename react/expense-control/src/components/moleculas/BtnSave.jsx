@@ -3,7 +3,7 @@ import {Icono} from '../../index';
 
 export const BtnSave = ({funcion, titulo, bgColor, icono}) => {
   return (
-    <Container type="submit" bgColor={bgColor}>
+    <Container type="submit" bgcolor={bgColor}>
       <Icono>{icono}</Icono>
       <span className="btn" onClick={funcion}>
         {titulo}
@@ -21,7 +21,7 @@ const Container = styled.button`
   gap: 10px;
   background-color: initial;
   .btn {
-    background-color: ${(props) => props.bgColor};
+    background-color: ${(props) => props.bgcolor};
     padding: 0.6em 1.3em;
     font-weight: 900;
     font-size: 18px;

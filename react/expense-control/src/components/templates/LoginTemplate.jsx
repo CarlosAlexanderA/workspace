@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import {BtnSave, v} from '../../index.js';
+import {BtnSave, useAuthStore, v} from '../../index.js';
 function LoginTemplate() {
+  const {signInWithGoogle} = useAuthStore();
+
   return (
     /* !cargamos asi para iniciar los estilos junto al elemento */
-    <Container imgFondo={v.imagenfondo}>
+    <Container imgfondo={v.imagenfondo}>
       <div className="contentCard">
         <span className="version">version 1.0</span>
 
@@ -21,6 +23,7 @@ function LoginTemplate() {
             titulo="Iniciar con Google"
             icono={<v.iconogoogle />}
             bgColor={v.colorSecundario}
+            funcion={signInWithGoogle}
           />
         </ContainerBtn>
       </div>
@@ -28,12 +31,12 @@ function LoginTemplate() {
   );
 }
 
-// *** me quede en 1:09:22 del video
-// !!! me quede en 1:09:22 del video
-// ??? me quede en 1:09:22 del video
+// *** me quede en 1:43:36 del video
+// !!! me quede en 1:43:36 del video
+// ??? me quede en 1:43:36 del video
 
 const Container = styled.div`
-  background-image: url(${(props) => props.imgFondo});
+  background-image: url(${(props) => props.imgfondo});
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
