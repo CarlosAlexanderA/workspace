@@ -1,6 +1,9 @@
 export {default as App} from './App';
 export * from './components/atomos/Icono';
 export * from './components/moleculas/BtnSave';
+export * from './components/organismos/MenuHambur';
+export * from './components/organismos/sidebar/SideBar';
+export {default as SideBarCard} from './components/organismos/sidebar/SideBarCard';
 export {default as HomeTemplate} from './components/templates/HomeTemplate';
 export {default as LoginTemplate} from './components/templates/LoginTemplate';
 export * from './context/AuthContext';
@@ -10,6 +13,8 @@ export {default as Home} from './pages/Home';
 export {default as Login} from './pages/Login';
 export * from './routers/routes';
 export * from './store/AuthStore';
+export * from './styles/breakPoints';
 export * from './styles/themes';
 export * from './styles/variables';
 export * from './supabase/supabase.config';
+export * from './utils/dataEstatica';

@@ -31,10 +31,6 @@ function LoginTemplate() {
   );
 }
 
-// *** me quede en 1:43:36 del video
-// !!! me quede en 1:43:36 del video
-// ??? me quede en 1:43:36 del video
-
 const Container = styled.div`
   background-image: url(${(props) => props.imgfondo});
   background-repeat: no-repeat;
