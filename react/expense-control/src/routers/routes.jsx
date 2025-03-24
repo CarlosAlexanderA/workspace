@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Routes} from 'react-router-dom';
-import {Home, Login, ProtectedRoute, UserAuth} from '../index';
+import {Configuracion, Home, Login, ProtectedRoute, UserAuth} from '../index';
 
 export const MyRoutes = () => {
   const {user} = UserAuth();
@@ -9,6 +9,7 @@ export const MyRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route element={<ProtectedRoute user={user} redirectTo="/login" />}>
         <Route path="/" element={<Home />} />
+        <Route path="/configurar" element={<Configuracion />} />
       </Route>
     </Routes>
   );

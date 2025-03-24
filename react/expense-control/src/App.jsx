@@ -20,7 +20,7 @@ function App() {
   const {pathname} = useLocation();
 
   // * sidebar menu estados
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <>
