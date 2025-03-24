@@ -1,5 +1,5 @@
 import React from 'react';
-import {v} from '../../../index';
+import {BtnSave, v} from '../../../index';
 import styled from 'styled-components';
 
 function SideBarCard() {
@@ -11,8 +11,9 @@ function SideBarCard() {
         <div className="circle2"></div>
 
         <h3>Centro de ayuda</h3>
-
-        <button className="btn">Conectar</button>
+        <div className="contentBtn">
+          <BtnSave titulo="Contactar" bgColor="#f8f8f8" />
+        </div>
       </div>
     </Container>
   );
@@ -63,6 +64,7 @@ const Container = styled.div`
       right: -70px;
       z-index: 1;
     }
+
     h3 {
       font-size: 1.1rem;
       margin-top: 1rem;
@@ -70,7 +72,15 @@ const Container = styled.div`
       font-weight: 800;
       color: #000;
     }
+
+    .contentBtn {
+      margin-left: -8px;
+    }
   }
 `;
+
+// * me quede en 3:11:51
+// ! me quede en 3:11:51
+// ? me quede en 3:11:51
 
 export default SideBarCard;

@@ -9,12 +9,15 @@ import {
   SideBar,
 } from './index';
 import {createContext, useState} from 'react';
+import {useLocation} from 'react-router-dom';
 
 export const ThemeContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState('dark');
   const themeStyle = theme === 'light' ? Light : Dark;
+
+  const {pathname} = useLocation();
 
   // * sidebar menu estados
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -24,17 +27,21 @@ function App() {
       <ThemeContext.Provider value={{setTheme, theme}}>
         <ThemeProvider theme={themeStyle}>
           <AuthContextProvider>
-            <Container className={sidebarOpen ? 'active' : ''}>
-              <div className="contentSidebar">
-                <SideBar state={sidebarOpen} setState={setSidebarOpen} />
-              </div>
-              <div className="contentMenuHambur">
-                <MenuHambur />
-              </div>
-              <ContainerBody>
-                <MyRoutes />
-              </ContainerBody>
-            </Container>
+            {pathname != '/login' ? (
+              <Container className={sidebarOpen ? 'active' : ''}>
+                <div className="contentSidebar">
+                  <SideBar state={sidebarOpen} setState={setSidebarOpen} />
+                </div>
+                <div className="contentMenuHambur">
+                  <MenuHambur />
+                </div>
+                <ContainerBody>
+                  <MyRoutes />
+                </ContainerBody>
+              </Container>
+            ) : (
+              <MyRoutes />
+            )}
           </AuthContextProvider>
         </ThemeProvider>
       </ThemeContext.Provider>

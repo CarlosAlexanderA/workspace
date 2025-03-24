@@ -4,11 +4,11 @@ import {NavLink} from 'react-router-dom';
 
 export const SideBar = ({state, setState}) => {
   return (
-    <Main isOpen={state}>
+    <Main $isopen={state}>
       <span className="sidebarButton" onClick={() => setState(!state)}>
         {<v.iconoflechaderecha />}
       </span>
-      <Container isOpen={state} className={state ? 'active' : ''}>
+      <Container $isopen={state} className={state ? 'active' : ''}>
         <div className="logoContent">
           <div className="imgContent">
             <img src={v.logo} />
@@ -61,7 +61,19 @@ const Container = styled.div`
   z-index: 50;
   height: 100%;
   width: 65px;
-  grid-template-columns: 65px 1fr;
+  transition: 0.1s ease-in-out;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({theme}) => theme.colorScroll};
+    border-radius: 10px;
+  }
 
   &.active {
     width: 220px;
@@ -80,7 +92,7 @@ const Container = styled.div`
       cursor: pointer;
       transition: all 0.5s ease-in-out;
 
-      transform: ${({isOpen}) => (isOpen ? `scale(0.7)` : `scale(1.5)`)}
+      transform: ${({$isopen}) => ($isopen ? `scale(0.7)` : `scale(1.5)`)}
         rotate(${({theme}) => theme.logorotate});
 
       img {
@@ -89,7 +101,7 @@ const Container = styled.div`
       }
     }
     h2 {
-      display: ${({isOpen}) => (isOpen ? `block` : `none`)};
+      display: ${({$isopen}) => ($isopen ? `block` : `none`)};
     }
 
     @keyframes flotar {
@@ -163,8 +175,8 @@ const Main = styled.div`
     cursor: pointer;
     transition: all 0.2s;
     z-index: 100;
-    transform: ${({isOpen}) =>
-      isOpen ? `translateX(162px) rotate(3.142rad)` : `initial`};
+    transform: ${({$isopen}) =>
+      $isopen ? `translateX(162px) rotate(3.142rad)` : `initial`};
     color: ${(props) => props.theme.text};
   }
 `;
@@ -175,5 +187,3 @@ const Divider = styled.div`
   background: ${(props) => props.theme.bg4};
   margin: ${() => v.lgSpacing} 0;
 `;
-
-// * mequede en 2:45:50

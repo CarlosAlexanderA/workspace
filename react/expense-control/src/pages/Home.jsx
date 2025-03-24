@@ -8,7 +8,7 @@ function Home() {
     <Container>
       <h1>Bienvenido {user.name}</h1>
       <img src={user.avatar_url} />
-      <button onClick={signOut}>Cerrar</button>
+      <button onClick={signOut}>Cerrar 💸</button>
     </Container>
   );
 }
