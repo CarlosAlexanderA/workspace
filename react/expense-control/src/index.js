@@ -1,10 +1,12 @@
 export {default as App} from './App';
+export {default as BtnCerrar} from './components/atomos/BtnCerrar';
 export * from './components/atomos/ContentHeader';
 export * from './components/atomos/Icono';
 export {default as BtnCircular} from './components/moleculas/BtnCircular';
 export * from './components/moleculas/BtnSave';
 export {default as InputBuscadorLista} from './components/moleculas/InputBuscadorLista';
 export {default as ItemDesplegable} from './components/moleculas/ItemDesplegable';
+export {default as ListaGenerica} from './components/moleculas/ListaGenerica';
 export {default as ListaMenuDesplegable} from './components/moleculas/ListaMenuDesplegable';
 export {default as DataUser} from './components/organismos/DataUser';
 export {default as Header} from './components/organismos/Header';

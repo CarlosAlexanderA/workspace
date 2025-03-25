@@ -20,6 +20,9 @@ const Container = styled.button`
   border: none;
   gap: 10px;
   background-color: initial;
+  cursor: pointer;
+  z-index: 10;
+
   .btn {
     background-color: ${(props) => props.bgcolor};
     padding: 0.6em 1.3em;
@@ -31,7 +34,7 @@ const Container = styled.button`
     transition: 0.2s;
     white-space: 1px;
     color: #000;
-    cursor: pointer;
+
     &:hover {
       transform: translate(-0.05em, -0.05em);
       box-shadow: 0.15em 0.15em #000;

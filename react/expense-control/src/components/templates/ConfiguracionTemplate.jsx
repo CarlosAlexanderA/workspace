@@ -1,5 +1,14 @@
 import styled from 'styled-components';
-import {Header, ListaPaises, Selector, useUsuariosStore, v} from '../../index';
+import {
+  BtnSave,
+  Header,
+  ListaGenerica,
+  ListaPaises,
+  Selector,
+  TemasData,
+  useUsuariosStore,
+  v,
+} from '../../index';
 import {useState} from 'react';
 
 export default function ConfiguracionTemplate() {
@@ -11,10 +20,22 @@ export default function ConfiguracionTemplate() {
   const [listaPaises, setListaPaises] = useState(false);
   const [select, setSelect] = useState(false);
 
+  // * pais moneda
   const moneda = select.symbol ? select.symbol : dataUsuarios.moneda;
   const pais = select.countryName ? select.countryName : dataUsuarios.pais;
 
   const paisSeleccionado = '🐷 ' + moneda + ' ' + pais;
+
+  // * tema
+  const [selectTema, setSelectTema] = useState([]);
+  const [listaTemas, setListaTemas] = useState(false);
+
+  const iconoBD = dataUsuarios.tema === '0' ? '🌞' : '🌚';
+  const temaBD = dataUsuarios.tema === '0' ? 'light' : 'dark';
+  const temaInicial = selectTema.tema ? selectTema.tema : temaBD;
+
+  const iconoInicial = selectTema.icono ? selectTema.icono : iconoBD;
+  const temaSeleccionado = iconoInicial + ' ' + temaInicial;
 
   return (
     <Container>
@@ -45,6 +66,29 @@ export default function ConfiguracionTemplate() {
             />
           )}
         </ContentCard>
+        {/* Lista de temas */}
+        <ContentCard>
+          <span>Tema: </span>
+          <Selector
+            texto1={temaSeleccionado}
+            color={v.colorselector}
+            state={listaTemas}
+            funcion={() => setListaTemas(!listaTemas)}
+          />
+          {listaTemas && (
+            <ListaGenerica
+              data={TemasData}
+              setState={() => setListaTemas(!listaTemas)}
+              funcion={setSelectTema}
+            />
+          )}
+        </ContentCard>
+
+        <BtnSave
+          titulo="Guardar"
+          bgColor={v.colorselector}
+          icono={<v.iconoguardar />}
+        />
       </section>
       <section className="main"></section>
     </Container>
@@ -78,9 +122,16 @@ const Container = styled.div`
   }
   .area2 {
     grid-area: area2;
-    background-color: rgba(55, 50, 128, 0.14);
+    background-color: rgba(19, 148, 77, 0.14);
     display: flex;
     align-items: center;
+    flex-direction: column;
+    justify-content: start;
+    gap: 30px;
+  }
+  .main {
+    grid-area: main;
+    background-color: rgba(179, 46, 241, 0.14);
   }
 `;
 
