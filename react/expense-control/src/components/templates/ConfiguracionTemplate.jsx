@@ -1,9 +1,21 @@
 import styled from 'styled-components';
-import {Header} from '../../index';
+import {Header, ListaPaises, Selector, useUsuariosStore, v} from '../../index';
 import {useState} from 'react';
 
 export default function ConfiguracionTemplate() {
+  const {dataUsuarios} = useUsuariosStore();
+
+  // ? las opciones del perfil
   const [openLista, setOpenLista] = useState(false);
+
+  const [listaPaises, setListaPaises] = useState(false);
+  const [select, setSelect] = useState(false);
+
+  const moneda = select.symbol ? select.symbol : dataUsuarios.moneda;
+  const pais = select.countryName ? select.countryName : dataUsuarios.pais;
+
+  const paisSeleccionado = '🐷 ' + moneda + ' ' + pais;
+
   return (
     <Container>
       <header className="header">
@@ -14,8 +26,26 @@ export default function ConfiguracionTemplate() {
           }}
         />
       </header>
-      <section className="area1"></section>
-      <section className="area2"></section>
+      <section className="area1">
+        <h1>Ajustes</h1>
+      </section>
+      <section className="area2">
+        <ContentCard>
+          <span>Moneda:</span>
+          <Selector
+            state={listaPaises}
+            color={v.colorselector}
+            texto1={paisSeleccionado}
+            funcion={() => setListaPaises(!listaPaises)}
+          />
+          {listaPaises && (
+            <ListaPaises
+              setSelect={(p) => setSelect(p)}
+              setState={() => setListaPaises(!listaPaises)}
+            />
+          )}
+        </ContentCard>
+      </section>
       <section className="main"></section>
     </Container>
   );
@@ -52,4 +82,14 @@ const Container = styled.div`
     display: flex;
     align-items: center;
   }
+`;
+
+const ContentCard = styled.div`
+  display: flex;
+  text-align: start;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  position: relative;
+  justify-content: center;
 `;

@@ -7,9 +7,12 @@ import {
   MenuHambur,
   MyRoutes,
   SideBar,
+  useUsuariosStore,
 } from './index';
 import {createContext, useState} from 'react';
 import {useLocation} from 'react-router-dom';
+import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
+import {useQuery} from '@tanstack/react-query';
 
 export const ThemeContext = createContext(null);
 
@@ -21,6 +24,20 @@ function App() {
 
   // * sidebar menu estados
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // * tanstack query
+  const {mostrarUsuarios} = useUsuariosStore();
+  const {isLoading, error} = useQuery({
+    queryKey: ['mostrar_usuarios'],
+    queryFn: () => mostrarUsuarios(),
+  });
+
+  if (isLoading) {
+    return <h1>Cargando ...</h1>;
+  }
+  if (error) {
+    return <h1>Error</h1>;
+  }
 
   return (
     <>
@@ -42,6 +59,7 @@ function App() {
             ) : (
               <MyRoutes />
             )}
+            <ReactQueryDevtools initialIsOpen={false} />
           </AuthContextProvider>
         </ThemeProvider>
       </ThemeContext.Provider>
