@@ -27,15 +27,16 @@ export default function ListaGenerica({data, setState, funcion}) {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${({theme}) => theme.bgtotal};
+  background-color: ${({theme}) => theme.body};
   color: ${({theme}) => theme.text};
   position: absolute;
-  margin-top: 15px;
-  top: 88%;
+  margin-bottom: 15px;
+  bottom: 88%;
   width: 100%;
   padding: 10px;
   border-radius: 10px;
   gap: 10px;
+  z-index: 90;
 
   @media ${() => Device.tablet} {
     width: 400px;

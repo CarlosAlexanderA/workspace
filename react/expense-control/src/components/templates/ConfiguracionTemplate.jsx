@@ -12,7 +12,7 @@ import {
 import {useState} from 'react';
 
 export default function ConfiguracionTemplate() {
-  const {dataUsuarios} = useUsuariosStore();
+  const {dataUsuarios, editarTemaMonedaUser} = useUsuariosStore();
 
   // ? las opciones del perfil
   const [openLista, setOpenLista] = useState(false);
@@ -37,6 +37,21 @@ export default function ConfiguracionTemplate() {
   const iconoInicial = selectTema.icono ? selectTema.icono : iconoBD;
   const temaSeleccionado = iconoInicial + ' ' + temaInicial;
 
+  // * funcion de editar el tema, moneda, y pais de usuario
+  const editar = async () => {
+    const themeElegido = selectTema.descripcion === 'light' ? '0' : '1';
+    const p = {
+      tema: themeElegido,
+      moneda: moneda,
+      pais: pais,
+      id: dataUsuarios.id,
+    };
+
+    console.log(pais, moneda, themeElegido);
+
+    await editarTemaMonedaUser(p);
+  };
+
   return (
     <Container>
       <header className="header">
@@ -47,10 +62,10 @@ export default function ConfiguracionTemplate() {
           }}
         />
       </header>
-      <section className="area1">
-        <h1>Ajustes</h1>
-      </section>
+
       <section className="area2">
+        <h1>Ajustes</h1>
+
         <ContentCard>
           <span>Moneda:</span>
           <Selector
@@ -88,9 +103,9 @@ export default function ConfiguracionTemplate() {
           titulo="Guardar"
           bgColor={v.colorselector}
           icono={<v.iconoguardar />}
+          funcion={editar}
         />
       </section>
-      <section className="main"></section>
     </Container>
   );
 }
@@ -104,34 +119,29 @@ const Container = styled.div`
   display: grid;
   grid-template:
     'header' 100px
-    'area1' 100px
-    'area2' 50px
-    'main' auto;
+    'area2' auto;
 
   .header {
     grid-area: header;
-    background-color: rgba(103, 93, 241, 0.14);
+    /* background-color: rgba(103, 93, 241, 0.14); */
     display: flex;
     align-items: center;
   }
-  .area1 {
-    grid-area: area1;
-    background-color: rgba(123, 122, 141, 0.473);
-    display: flex;
-    align-items: center;
-  }
+
   .area2 {
     grid-area: area2;
-    background-color: rgba(19, 148, 77, 0.14);
+    /* background-color: rgba(19, 148, 77, 0.14); */
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: start;
     gap: 30px;
-  }
-  .main {
-    grid-area: main;
-    background-color: rgba(179, 46, 241, 0.14);
+    align-self: center;
+
+    h1 {
+      font-size: 3rem;
+      text-transform: uppercase;
+    }
   }
 `;
 
@@ -144,3 +154,6 @@ const ContentCard = styled.div`
   position: relative;
   justify-content: center;
 `;
+
+//! tengo un error en actualizar los datos
+// * me quede en 6:15:00

@@ -1,5 +1,5 @@
 import {create} from 'zustand';
-import {MostarUsuarios} from '../index';
+import {EditarTemaMonedaUser, MostarUsuarios} from '../index';
 
 export const useUsuariosStore = create((set, get) => ({
   dataUsuarios: [],
@@ -8,6 +8,13 @@ export const useUsuariosStore = create((set, get) => ({
     if (!response) throw new Error('No se recibieron datos'); // Validación extra
 
     set({dataUsuarios: response});
-    return response;
+    return response ? response : [];
+  },
+  editarTemaMonedaUser: async (p) => {
+    await EditarTemaMonedaUser(p);
+
+    // * para actualizar automaticamente la pagina
+    const {mostrarUsuarios} = get();
+    set(mostrarUsuarios);
   },
 }));
