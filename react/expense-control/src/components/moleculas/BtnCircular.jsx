@@ -12,13 +12,13 @@ export default function BtnCircular({
 }) {
   return (
     <Container
-      bgcolor={bgColor}
-      textcolor={textColor}
-      height={height}
-      width={width}
-      fontsize={fontSize}
-      translatex={translateX}
-      translatey={translateY}
+      $bgcolor={bgColor}
+      $textcolor={textColor}
+      $height={height}
+      $width={width}
+      $fontsize={fontSize}
+      $translatex={translateX}
+      $translatey={translateY}
     >
       <span>{icono}</span>
     </Container>
@@ -26,20 +26,20 @@ export default function BtnCircular({
 }
 
 const Container = styled.div`
-  background-color: ${({bgcolor}) => bgcolor};
-  min-width: ${({width}) => width};
-  min-height: ${({height}) => height};
+  background-color: ${({$bgcolor}) => $bgcolor};
+  min-width: ${({$width}) => $width};
+  min-height: ${({$height}) => $height};
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  transform: translateX(${({translatex}) => translatex})
-    translateY(${({translatey}) => translatey});
+  transform: translateX(${({$translatex}) => $translatex})
+    translateY(${({$translatey}) => $translatey});
 
   span {
-    font-size: ${({fontsize}) => fontsize};
+    font-size: ${({$fontsize}) => $fontsize};
     text-align: center;
-    color: ${({textcolor}) => textcolor};
+    color: ${({$textcolor}) => $textcolor};
   }
 `;

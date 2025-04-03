@@ -8,7 +8,7 @@ export default function ListaMenuDesplegable({data, top, funcion}) {
         <ItemDesplegable
           key={index}
           item={item}
-          funcion={() => funcion(item.tipo)}
+          funcion={() => funcion(item)}
         />
       ))}
     </Container>
