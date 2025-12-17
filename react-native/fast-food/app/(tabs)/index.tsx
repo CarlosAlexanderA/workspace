@@ -11,6 +11,9 @@ import {
   View,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+
+// import * as Sentry from '@sentry/react-native';
+
 export default function Index() {
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -82,7 +85,40 @@ export default function Index() {
             <CartButton />
           </View>
         )}
+        // ListFooterComponent={() => (
+        //   <Button
+        //     title="Try!"
+        //     onPress={() => {
+        //       Sentry.captureException(new Error('First error'));
+        //     }}
+        //   />
+        //   // <Text>This is a button</Text>
+        // )}
       />
     </SafeAreaView>
   );
 }
+
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
+// ?? 1.58:27
