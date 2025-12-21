@@ -47,7 +47,9 @@
           "project": "food-ordering",
           "organization": "jsm-31j"
         }
-      ]
+      ],
+      "expo-asset",
+      "expo-image-picker",
     ],
     "experiments": {
       "typedRoutes": true,
