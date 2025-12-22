@@ -1,6 +1,10 @@
 import CartButton from '@/components/CartButton';
+import Filter from '@/components/Filter';
+import MenuCart from '@/components/MenuCart';
+import SearchBar from '@/components/SearchBar';
 import {getCategories, getMenu} from '@/lib/appwrite';
 import useAppwrite from '@/lib/useAppwrite';
+import {Category, MenuItem} from '@/type';
 import cn from 'clsx';
 import {useLocalSearchParams} from 'expo-router';
 import React, {useEffect} from 'react';
@@ -22,7 +26,7 @@ const Search = () => {
   });
 
   const {data: categories} = useAppwrite({fn: getCategories});
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     refetch({category, query, limit: 6});
@@ -42,7 +46,7 @@ const Search = () => {
                 !isFirstRightColItem ? 'mt-10' : 'mt-0'
               )}
             >
-              <Text>Menu card</Text>
+              <MenuCart item={item as MenuItem} />
             </View>
           );
         }}
@@ -66,8 +70,8 @@ const Search = () => {
 
               <CartButton />
             </View>
-            <Text> Search Input</Text>
-            <Text>Filter</Text>
+            <SearchBar />
+            <Filter categories={categories!} />
           </View>
         )}
         ListEmptyComponent={() => !loading && <Text>No results</Text>}
