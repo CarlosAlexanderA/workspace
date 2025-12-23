@@ -1,10 +1,10 @@
 import CartButton from '@/components/CartButton';
 import Filter from '@/components/Filter';
-import MenuCart from '@/components/MenuCart';
+import MenuCard from '@/components/MenuCard';
 import SearchBar from '@/components/SearchBar';
 import {getCategories, getMenu} from '@/lib/appwrite';
 import useAppwrite from '@/lib/useAppwrite';
-import {Category, MenuItem} from '@/type';
+import {MenuItem} from '@/type';
 import cn from 'clsx';
 import {useLocalSearchParams} from 'expo-router';
 import React, {useEffect} from 'react';
@@ -46,7 +46,7 @@ const Search = () => {
                 !isFirstRightColItem ? 'mt-10' : 'mt-0'
               )}
             >
-              <MenuCart item={item as MenuItem} />
+              <MenuCard item={item as MenuItem} />
             </View>
           );
         }}
